@@ -13,7 +13,8 @@
     ],
     "include": [
       "models",
-      "config"
+      "config",
+      "state-machines"
     ]
   }
   

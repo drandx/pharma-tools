@@ -1,0 +1,1 @@
+export { QuoteStatusValidator } from './QuoteStatusValidator';
