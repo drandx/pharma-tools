@@ -1,0 +1,19 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "sourceMap": false,
+      "declaration": false,
+      "rootDir": ".",
+      "outDir": "lib",
+      "removeComments": true,
+      "jsx": "react"
+    },
+    "files": [
+      "index.d.ts"
+    ],
+    "include": [
+      "models",
+      "config"
+    ]
+  }
+  

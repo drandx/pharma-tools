@@ -1,0 +1,48 @@
+{
+  "name": "pharma-tools",
+  "version": "0.1.0",
+  "description": "Shared code for pharmalatam back-end",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@types/joi": "^10.4.1",
+    "@types/uuid": "^3.4.0",
+    "aws-sdk": "^2.38.0",
+    "dynamodb-marshaler": "^2.0.0",
+    "joi": "^10.6.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "~19.2.2",
+    "@types/node": "~6.0.65",
+    "json-loader": "^0.5.4",
+    "ts-jest": "^19.0.6",
+    "ts-loader": "^2.3.2",
+    "tslib": "~1.6.0",
+    "tslint": "~4.5.1"
+  },
+  "scripts": {
+    "build": "npm run tsc",
+    "test": "jest",
+    "test:cov": "jest coverage",
+    "tsc": "tsc"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/preprocessor.js"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "lib/**/*.{ts,tsx,js,jsx}",
+      "!src/**/*.d.ts"
+    ]
+  }
+}
