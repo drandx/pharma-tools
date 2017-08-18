@@ -1,5 +1,5 @@
 import * as uuid from 'uuid';
-import * as dynogels from 'dynogels';
+import * as dynogels from 'drandx-dynogels';
 import * as joi from 'joi';
 
 import { BaseModel } from './BaseModel';
