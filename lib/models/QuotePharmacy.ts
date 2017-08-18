@@ -1,4 +1,4 @@
-import * as dynogels from 'dynogels';
+import * as dynogels from 'drandx-dynogels';
 import * as joi from 'joi';
 import { BaseModel } from './BaseModel';
 import { QUOTE_STATUS_ENUM } from './Enums';
