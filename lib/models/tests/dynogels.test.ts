@@ -1,7 +1,9 @@
 import { QuotePharmacy } from '../QuotePharmacy';
 import { Utils } from '../../config/utils';
+import { Quote } from '../Quote';
 
 const quotePharmacy: QuotePharmacy = new QuotePharmacy();
+let quote: QuotePharmacy = new QuotePharmacy();
 
 describe('Adds a random element to the DB', () => {
     beforeAll(done => {
@@ -11,6 +13,9 @@ describe('Adds a random element to the DB', () => {
             createdAt: Utils.unixNowTimestamp(),
             status: 'testing',
         }, {}, (err, res) => {
+            quote.pharmacyId = res.get().pharmacyId;
+            quote.quoteId = res.get().quoteId;
+            console.log('Before all Res: ', res.get(), quote.quoteId, quote.pharmacyId);            
             done();
         });
     });
@@ -24,7 +29,6 @@ describe('Adds a random element to the DB', () => {
                 expect(res.attrs.quoteId).toEqual('test-dynogels-types-quoteId');
                 expect(res.attrs.pharmacyId).toEqual('test-dynogels-types-pharmacyId'); 
                 expect(res.get('pharmacyId')).toEqual('test-dynogels-types-pharmacyId');
-                console.log('Get: ', res.get());
                 done();                           
             });
     });
@@ -36,7 +40,7 @@ describe('Adds a random element to the DB', () => {
             .query('test-dynogels-types-quoteId')
             .ascending()
             .exec((err, res) => {
-                console.log('Query simple hash key res.Items[0]: ', res.Items[0].get());
+                expect(res.Items[0].get().quoteId).toEqual('test-dynogels-types-quoteId');
             });
     });
 
@@ -48,7 +52,14 @@ describe('Adds a random element to the DB', () => {
             .filter('status').ne(2)
             .descending()
             .exec((err, data) => {
-                console.log('Query existing index - data.Item[0]: ', data.Items[0].get());                
+                expect(data.Items[0].get().pharmacyId).toEqual('d2855612-1f15-4cbe-9743-e089638f3d4b');              
             });
     });
+
+    afterAll(() => {
+        console.log('After all: ', quote.quoteId, quote.pharmacyId);
+        quote.model.destroy(quote.quoteId, quote.pharmacyId, (err) => {
+            expect(err).toBeUndefined();
+        })
+    })
 });

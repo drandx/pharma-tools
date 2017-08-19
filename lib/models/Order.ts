@@ -6,6 +6,7 @@ import { BaseModel } from './BaseModel';
 import { ORDER_STATUS_ENUM } from './Enums';
 import { Product } from './Product';
 import { globalConst, awsConfig } from "../config/db/appVariables";
+import { User } from './User';
 
 dynogels.AWS.config.update(awsConfig);    
 
@@ -16,6 +17,7 @@ export class Order extends BaseModel {
   public products: Product[];
   public quoteId: string;
   public status: ORDER_STATUS_ENUM;
+  public customer: User;
 
   constructor() {
     super();
@@ -31,6 +33,7 @@ export class Order extends BaseModel {
         customerId: joi.string(),        
         quoteId: joi.string(),
         pharmacyId: joi.string(),
+        products: joi.array(),
         createdAt: joi.number(),
         updatedAt: joi.number(),
         status: joi.string(),
