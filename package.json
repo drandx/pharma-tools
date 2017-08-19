@@ -1,6 +1,6 @@
 {
   "name": "pharma-tools",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "description": "Shared code for pharmalatam back-end",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,7 +24,7 @@
     "tslint": "~4.5.1"
   },
   "scripts": {
-    "build": "npm run tsc",
+    "prepublish": "npm run tsc",
     "test": "jest",
     "test:cov": "jest coverage",
     "tsc": "tsc"
