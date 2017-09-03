@@ -14,7 +14,6 @@ export class Product extends BaseModel {
     hashKey: 'id',
     rangeKey: 'name',
     timestamps: false,
-    createdAt: false,
     schema: {
       id: joi.string(),
       name: joi.string(),

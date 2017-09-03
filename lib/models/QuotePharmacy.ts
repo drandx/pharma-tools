@@ -27,7 +27,6 @@ export class QuotePharmacy extends BaseModel {
         hashKey: 'quoteId',
         rangeKey: 'pharmacyId',
         timestamps: false,
-        createdAt: false,
         schema: {
             quoteId: joi.string(),
             pharmacyId: joi.string(),
