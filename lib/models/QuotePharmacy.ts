@@ -6,7 +6,7 @@ import { Product } from './Product';
 import { User } from './User';
 import { awsConfig, globalConst } from '../config/db/appVariables';
 
-dynogels.AWS.config.update(awsConfig);    
+dynogels.AWS.config.update(awsConfig);
 
 export class QuotePharmacy extends BaseModel {
     public quoteId: string;
@@ -27,6 +27,7 @@ export class QuotePharmacy extends BaseModel {
         hashKey: 'quoteId',
         rangeKey: 'pharmacyId',
         timestamps: false,
+        createdAt: false,
         schema: {
             quoteId: joi.string(),
             pharmacyId: joi.string(),
@@ -38,11 +39,10 @@ export class QuotePharmacy extends BaseModel {
             pharmacyPosition: joi.object(),
         },
         tableName: `${globalConst.stage}_quote_pharmacy`,
-        indexes: [{
-            hashKey: 'pharmacyId',
-            rangeKey: 'createdAt',
-            name: 'pharmacyId-createdAt-index',
-            type: 'global',
-        }],
+        indexes: [
+            { hashKey: 'pharmacyId', rangeKey: 'createdAt', name: 'pharmacyId-createdAt-index', type: 'global' },
+            { hashKey: 'customer.id', rangeKey: 'updatedAt', name: 'customerIndex', type: 'global' },
+            { hashKey: 'status', rangeKey: 'updatedAt', name: 'statusIndex', type: 'global' },
+            ],
     });
 }

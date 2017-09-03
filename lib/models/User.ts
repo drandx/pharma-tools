@@ -21,7 +21,9 @@ export class User extends BaseModel {
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
     hashKey: 'id',
+    rangeKey: 'name',
     timestamps: false,
+    createdAt: false,
     schema: {
       id: joi.string(),
       name: joi.string(),
@@ -47,5 +49,10 @@ export class User extends BaseModel {
       updatedAt: joi.number(),
     },
     tableName: `${globalConst.stage}_users`,
+    indexes : [
+      { hashKey : 'userIdentification', rangeKey : 'name', type : 'global', name : 'userIdentificationIndex',},
+      { hashKey : 'email', rangeKey : 'name', type : 'global', name : 'emailIndex',},
+      { hashKey : 'city', rangeKey : 'name', type : 'global', name : 'cityIndex',},
+      ]
 });
 }
