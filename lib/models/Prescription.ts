@@ -1,6 +1,8 @@
+import * as dynogels from 'drandx-dynogels';
 import * as uuid from 'uuid';
+import * as joi from 'joi';
 import { BaseModel } from './BaseModel';
-
+import { awsConfig, globalConst } from '../config/db/appVariables';
 export class Prescription extends BaseModel {
   public id: string;
   public name: string;
@@ -15,7 +17,6 @@ export class Prescription extends BaseModel {
     hashKey: 'id',
     rangeKey: 'createdAt',
     timestamps: false,
-    createdAt: false,
     schema: {
       id: joi.string(),
       doctor: joi.object(),

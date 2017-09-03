@@ -1,5 +1,10 @@
+import * as dynogels from 'drandx-dynogels';
 import * as uuid from 'uuid';
+import * as joi from 'joi';
 import { BaseModel } from './BaseModel';
+import { awsConfig, globalConst } from '../config/db/appVariables';
+
+dynogels.AWS.config.update(awsConfig);
 
 export class Product extends BaseModel {
   public id: string;
