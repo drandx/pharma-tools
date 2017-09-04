@@ -14,3 +14,10 @@ export enum ORDER_STATUS_ENUM {
     DELIVERED = 'DELIVERED',
     CLOSED = 'CLOSED',    
 }
+
+export enum USER_ROLES_ENUM {
+    PATIENT = 'PATIENT',
+    PHARMACY = 'PHARMACY',
+    DOCTOR = 'DOCTOR',
+    ADMIN = 'ADMIN'
+}
