@@ -15,7 +15,7 @@ export class Product extends BaseModel {
     this.id = uuid.v4();
   }
 
-  public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
+  public model: dynogels.Model = dynogels.define(`${globalConst.stage}_products`, {
     hashKey: 'id',
     rangeKey: 'name',
     timestamps: false,

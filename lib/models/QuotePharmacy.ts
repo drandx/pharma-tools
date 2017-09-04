@@ -40,7 +40,6 @@ export class QuotePharmacy extends BaseModel {
         tableName: `${globalConst.stage}_quote_pharmacy`,
         indexes: [
             { hashKey: 'pharmacyId', rangeKey: 'createdAt', name: 'pharmacyId-createdAt-index', type: 'global' },
-            { hashKey: 'customer.id', rangeKey: 'updatedAt', name: 'customerIndex', type: 'global' },
             { hashKey: 'status', rangeKey: 'updatedAt', name: 'statusIndex', type: 'global' },
             ],
     });

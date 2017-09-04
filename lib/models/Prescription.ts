@@ -3,6 +3,7 @@ import * as uuid from 'uuid';
 import * as joi from 'joi';
 import { BaseModel } from './BaseModel';
 import { awsConfig, globalConst } from '../config/db/appVariables';
+
 export class Prescription extends BaseModel {
   public id: string;
   public name: string;
@@ -25,10 +26,10 @@ export class Prescription extends BaseModel {
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
-    tableName: `${globalConst.stage}_users`,
+    tableName: `${globalConst.stage}_prescriptions`,
     indexes : [
-      { hashKey : 'doctor.id', rangeKey : 'createAt', type : 'global', name : 'doctorIndex',},
-      { hashKey : 'patient.id', rangeKey : 'createAt', type : 'global', name : 'patientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'createAt', type : 'global', name : 'doctorIndex',},
+      { hashKey : 'patientId', rangeKey : 'createAt', type : 'global', name : 'patientIndex',},
       ]
 });
 }
