@@ -1,6 +1,7 @@
 import * as uuid from 'uuid';
 import * as dynogels from 'drandx-dynogels';
 import { BaseModel } from './BaseModel';
+import { STATUS_ENUM } from './Enums';
 import { globalConst } from '../config/db/appVariables';
 import * as joi from 'joi';
 
@@ -13,10 +14,12 @@ export class User extends BaseModel {
   public city: string;
   public country: string;
   public state: string;
+  public status: STATUS_ENUM;
 
   constructor() {
     super();
     this.id = uuid.v4();
+    this.status = STATUS_ENUM.ACTIVE;
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
@@ -43,12 +46,14 @@ export class User extends BaseModel {
       doctorType: joi.array().items(joi.string()),
       roles: joi.array().items(joi.string()),
       userIDImage: joi.string(),
+      status: joi.string(),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
     tableName: `${globalConst.stage}_users`,
     indexes : [
       { hashKey : 'city', rangeKey : 'name', type : 'global', name : 'cityIndex',},
+      { hashKey : 'status', rangeKey : 'name', type : 'global', name : 'statusIndex',},
       ]
 });
 }

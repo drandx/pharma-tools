@@ -21,3 +21,8 @@ export enum USER_ROLES_ENUM {
     DOCTOR = 'DOCTOR',
     ADMIN = 'ADMIN'
 }
+
+export enum STATUS_ENUM {
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+}
