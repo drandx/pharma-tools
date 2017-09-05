@@ -48,8 +48,6 @@ export class User extends BaseModel {
     },
     tableName: `${globalConst.stage}_users`,
     indexes : [
-      { hashKey : 'userIdentification', rangeKey : 'name', type : 'global', name : 'userIdentificationIndex',},
-      { hashKey : 'email', rangeKey : 'name', type : 'global', name : 'emailIndex',},
       { hashKey : 'city', rangeKey : 'name', type : 'global', name : 'cityIndex',},
       ]
 });
