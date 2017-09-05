@@ -21,7 +21,6 @@ export class User extends BaseModel {
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
     hashKey: 'id',
-    rangeKey: 'name',
     timestamps: false,
     schema: {
       id: joi.string(),
