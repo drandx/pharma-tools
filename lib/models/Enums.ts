@@ -21,3 +21,8 @@ export enum USER_ROLES_ENUM {
     DOCTOR = 'DOCTOR',
     ADMIN = 'ADMIN'
 }
+
+export enum LOGIN_SESSION_STATUS {
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE'
+}
