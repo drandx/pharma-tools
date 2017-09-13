@@ -26,3 +26,8 @@ export enum LOGIN_SESSION_STATUS {
     ACTIVE = 'ACTIVE',
     INACTIVE = 'INACTIVE'
 }
+
+export enum STATUS_ENUM {
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+}
