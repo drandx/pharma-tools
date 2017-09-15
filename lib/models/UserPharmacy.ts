@@ -5,26 +5,24 @@ import { globalConst } from '../config/db/appVariables';
 import { LOGIN_SESSION_STATUS } from './Enums';
 import * as joi from 'joi';
 
-export class Pharmacy extends BaseModel {
-    public id: string;
-    public address: string;
-    public name: string;
+export class UserPharmacy extends BaseModel {
+    public userId: string;
+    public pharmacyId: string;
 
     constructor() {
         super();
-        this.id = uuid.v4();
     }
 
-    public model: dynogels.Model = dynogels.define(`${globalConst.stage}_pharmacies`, {
-        hashKey: 'id',
+    public model: dynogels.Model = dynogels.define(`${globalConst.stage}_user_pharmacies`, {
+        hashKey: 'userId',
+        rangeKey: 'pharmacyId',
         timestamps: false,
         schema: {
-          id: joi.string(),            
-          address: joi.string(),
-          name: joi.string(),
+          userId: joi.string(),            
+          pharmacyId: joi.string(),
           createdAt: joi.number(),
           updatedAt: joi.number(),
         },
-        tableName: `${globalConst.stage}_pharmacy_session`,
+        tableName: `${globalConst.stage}_user_pharmacies`,
     });
 }

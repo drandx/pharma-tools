@@ -1,3 +1,4 @@
+export { UserPharmacy } from './UserPharmacy';
 export { BaseModel } from './BaseModel';
 export { Order } from './Order';
 export { Pharmacy } from './Pharmacy';
