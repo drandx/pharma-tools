@@ -13,7 +13,7 @@ export class UserPharmacy extends BaseModel {
         super();
     }
 
-    public model: dynogels.Model = dynogels.define(`${globalConst.stage}_user_pharmacies`, {
+    public model: dynogels.Model = dynogels.define(`${globalConst.stage}_user_pharmacy`, {
         hashKey: 'userId',
         rangeKey: 'pharmacyId',
         timestamps: false,
@@ -23,6 +23,6 @@ export class UserPharmacy extends BaseModel {
           createdAt: joi.number(),
           updatedAt: joi.number(),
         },
-        tableName: `${globalConst.stage}_user_pharmacies`,
+        tableName: `${globalConst.stage}_user_pharmacy`,
     });
 }
