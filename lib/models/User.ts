@@ -54,6 +54,7 @@ export class User extends BaseModel {
     indexes : [
       { hashKey : 'city', rangeKey : 'name', type : 'global', name : 'cityIndex',},
       { hashKey : 'status', rangeKey : 'name', type : 'global', name : 'statusIndex',},
+      { hashKey : 'email', rangeKey : 'name', type : 'global', name : 'emailIndex',},
       ]
 });
 }

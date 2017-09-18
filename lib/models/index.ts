@@ -8,4 +8,5 @@ export { Product } from './Product';
 export { Quote } from './Quote';
 export { QuotePharmacy } from './QuotePharmacy';
 export { User } from './User';
+export { Specialty } from './Specialty';
 export { QUOTE_STATUS_ENUM, ORDER_STATUS_ENUM, USER_ROLES_ENUM, STATUS_ENUM } from './Enums';
