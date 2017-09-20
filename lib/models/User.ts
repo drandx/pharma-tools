@@ -8,6 +8,7 @@ import * as joi from 'joi';
 export class User extends BaseModel {
   public id: string;
   public name: string;
+  private tagsName: string;
   public email: string;
   public phone: string;
   public address: string;
@@ -20,6 +21,9 @@ export class User extends BaseModel {
     super();
     this.id = uuid.v4();
     this.status = STATUS_ENUM.ACTIVE;
+    if (this.name) {
+      this.tagsName = this.name.toLowerCase();
+    }
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
@@ -28,6 +32,7 @@ export class User extends BaseModel {
     schema: {
       id: joi.string(),
       name: joi.string(),
+      tagsName: joi.string(),
       email: joi.string().email(),
       password: joi.string(),
       identificationType: joi.string().default('CC'),
