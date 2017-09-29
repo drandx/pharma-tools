@@ -6,12 +6,26 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 
 export class Prescription extends BaseModel {
   public id: string;
-  public name: string;
+  public doctorId: string;
+  public doctorName: string;
+  private doctorTagsName: string;
+  public doctorPhoto: string;
+  public patientId: string;
+  public patientName: string;
+  private patientTagsName: string;
+  public patientPhoto: string;
+  public formula: object;
 
 
   constructor() {
     super();
     this.id = uuid.v4();
+    if (this.doctorName) {
+      this.doctorTagsName = this.doctorName.toLowerCase();
+    }
+    if (this.patientName) {
+      this.patientTagsName = this.patientName.toLowerCase();
+    }
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_prescriptions`, {
@@ -20,16 +34,23 @@ export class Prescription extends BaseModel {
     timestamps: false,
     schema: {
       id: joi.string(),
-      doctor: joi.object(),
-      patient: joi.string().email(),
+      doctorId: joi.number(),
+      doctorName: joi.string(),
+      doctorTagsName: joi.string(),
+      doctorPhoto: joi.string(),
+      patientId: joi.number(),
+      patientName: joi.string(),
+      patientTagsName: joi.string(),
+      patientPhoto: joi.string(),
       formula: joi.array().items(joi.object()),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
     tableName: `${globalConst.stage}_prescriptions`,
     indexes : [
-      { hashKey : 'doctorId', rangeKey : 'createAt', type : 'global', name : 'doctorIndex',},
-      { hashKey : 'patientId', rangeKey : 'createAt', type : 'global', name : 'patientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'patientName', type : 'global', name : 'myPatientsIndex',},
+      { hashKey : 'patientId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionPatientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionDoctorIndex',},
       ]
 });
 }
