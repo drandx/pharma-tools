@@ -39,8 +39,8 @@ export class Prescription extends BaseModel {
     tableName: `${globalConst.stage}_prescriptions`,
     indexes : [
       { hashKey : 'doctorId', rangeKey : 'patientName', type : 'global', name : 'myPatientsIndex',},
-      { hashKey : 'patientId', rangeKey : 'createAt', type : 'global', name : 'prescriptionPatientIndex',},
-      { hashKey : 'doctorId', rangeKey : 'createAt', type : 'global', name : 'prescriptionDoctorIndex',},
+      { hashKey : 'patientId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionPatientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionDoctorIndex',},
       ]
 });
 }
