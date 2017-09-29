@@ -6,7 +6,13 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 
 export class Prescription extends BaseModel {
   public id: string;
-  public name: string;
+  public doctorId: string;
+  public doctorName: string;
+  public doctorPhoto: string;
+  public patientId: string;
+  public patientName: string;
+  public patientPhoto: string;
+  public formula: object;
 
 
   constructor() {
@@ -20,16 +26,21 @@ export class Prescription extends BaseModel {
     timestamps: false,
     schema: {
       id: joi.string(),
-      doctor: joi.object(),
-      patient: joi.string().email(),
+      doctorId: joi.number(),
+      doctorName: joi.string(),
+      doctorPhoto: joi.string(),
+      patientId: joi.number(),
+      patientName: joi.string(),
+      patientPhoto: joi.string(),
       formula: joi.array().items(joi.object()),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
     tableName: `${globalConst.stage}_prescriptions`,
     indexes : [
-      { hashKey : 'doctorId', rangeKey : 'createAt', type : 'global', name : 'doctorIndex',},
-      { hashKey : 'patientId', rangeKey : 'createAt', type : 'global', name : 'patientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'patientName', type : 'global', name : 'myPatientsIndex',},
+      { hashKey : 'patientId', rangeKey : 'createAt', type : 'global', name : 'prescriptionPatientIndex',},
+      { hashKey : 'doctorId', rangeKey : 'createAt', type : 'global', name : 'prescriptionDoctorIndex',},
       ]
 });
 }
