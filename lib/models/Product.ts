@@ -11,7 +11,6 @@ export class Product extends BaseModel {
   public id: string;
   public name: string;
   public status: STATUS_ENUM;
-  
 
   constructor() {
     super();
