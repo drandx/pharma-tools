@@ -34,11 +34,11 @@ export class Prescription extends BaseModel {
     timestamps: false,
     schema: {
       id: joi.string(),
-      doctorId: joi.number(),
+      doctorId: joi.string(),
       doctorName: joi.string(),
       doctorTagsName: joi.string(),
       doctorPhoto: joi.string(),
-      patientId: joi.number(),
+      patientId: joi.string(),
       patientName: joi.string(),
       patientTagsName: joi.string(),
       patientPhoto: joi.string(),
