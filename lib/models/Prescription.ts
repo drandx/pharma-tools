@@ -7,11 +7,12 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 export class Prescription extends BaseModel {
   public id: string;
   public doctorId: string;
-  public doctorName: string;
+  public doctorName: string = '';
   private doctorTagsName: string;
   public doctorPhoto: string;
   public patientId: string;
-  public patientName: string;
+  public patientName: string = '';
+  public patientIdentification: string;
   private patientTagsName: string;
   public patientPhoto: string;
   public formula: object;
@@ -20,12 +21,8 @@ export class Prescription extends BaseModel {
   constructor() {
     super();
     this.id = uuid.v4();
-    if (this.doctorName) {
-      this.doctorTagsName = this.doctorName.toLowerCase();
-    }
-    if (this.patientName) {
-      this.patientTagsName = this.patientName.toLowerCase();
-    }
+    this.doctorTagsName = this.doctorName.toLowerCase();
+    this.patientTagsName = this.patientName.toLowerCase();
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_prescriptions`, {
@@ -42,6 +39,7 @@ export class Prescription extends BaseModel {
       patientName: joi.string(),
       patientTagsName: joi.string(),
       patientPhoto: joi.string(),
+      patientIdentification: joi.string(),
       formula: joi.array().items(joi.object()),
       createdAt: joi.number(),
       updatedAt: joi.number(),
