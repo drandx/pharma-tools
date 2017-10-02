@@ -7,7 +7,7 @@ export class BaseService {
    * @param {number} lastTimestamp - timestap from return result
    * @param {int} limit - total items returns
    */
-  public result(query: dynogels.Query, limit?: number, lastTimestampItem?: number): Promise<{}> {
+  public result(query: dynogels.Query, limit?: number, lastKeyValue?: any, lastKeyField?: string): Promise<{}> {
     return new Promise( (resolve, reject) => {
       const callback: Function = (err, resp) => {
           if (err) {
@@ -16,8 +16,8 @@ export class BaseService {
             resolve(resp.Items);
           }
       };
-      if (lastTimestampItem) {
-        query = query.filter('createdAt').gt(lastTimestampItem);
+      if (lastKeyField && lastKeyValue) {
+        query = query.filter(lastKeyField).gt(lastKeyValue);
         if (limit) {
           limit = limit + 1;
         }
