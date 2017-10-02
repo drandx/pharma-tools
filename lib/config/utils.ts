@@ -1,3 +1,3 @@
 export class Utils {
-    static unixNowTimestamp() { return Date.now(); }
+    static unixNowTimestamp() { return new Date().getTime() }
 }
