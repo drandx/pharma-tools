@@ -4,8 +4,9 @@ export class BaseService {
   /**
    * return array of query result
    * @param {dynogels.Query | dynogels.Scan} query - queryset
-   * @param {number} lastTimestamp - timestap from return result
    * @param {int} limit - total items returns
+   * @param {any} lastKeyValue - lastKey value
+   * @param {string} lastKeyField - name field for lastKey
    */
   public result(query: dynogels.Query, limit?: number, lastKeyValue?: any, lastKeyField?: string): Promise<{}> {
     return new Promise( (resolve, reject) => {
@@ -18,9 +19,6 @@ export class BaseService {
       };
       if (lastKeyField && lastKeyValue) {
         query = query.filter(lastKeyField).gt(lastKeyValue);
-        if (limit) {
-          limit = limit + 1;
-        }
       }
 
       if (limit) {
