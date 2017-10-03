@@ -21,8 +21,12 @@ export class Prescription extends BaseModel {
   constructor() {
     super();
     this.id = uuid.v4();
-    this.doctorTagsName = this.doctorName.toLowerCase();
-    this.patientTagsName = this.patientName.toLowerCase();
+    if (this.doctorTagsName) {
+      this.doctorTagsName = this.doctorName.toLowerCase();
+    }
+    if (this.patientTagsName) {
+      this.patientTagsName = this.patientName.toLowerCase();
+    }
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_prescriptions`, {

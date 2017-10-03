@@ -11,11 +11,16 @@ export class Product extends BaseModel {
   public id: string;
   public name: string;
   public status: STATUS_ENUM;
+  private tagsName: string;
 
   constructor() {
     super();
     this.id = uuid.v4();
     this.status = STATUS_ENUM.ACTIVE;
+    if (this.name) {
+      this.tagsName = this.name.toLowerCase();
+    }
+    
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_products`, {
@@ -24,6 +29,7 @@ export class Product extends BaseModel {
     schema: {
       id: joi.string(),
       name: joi.string(),
+      tagsName: joi.string(),
       status: joi.string(),
       createdAt: joi.number(),
       updatedAt: joi.number(),
