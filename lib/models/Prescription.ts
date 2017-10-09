@@ -7,11 +7,11 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 export class Prescription extends BaseModel {
   public id: string;
   public doctorId: string;
-  public doctorName: string = '';
+  public doctorName: string;
   private doctorTagsName: string;
   public doctorPhoto: string;
   public patientId: string;
-  public patientName: string = '';
+  public patientName: string;
   public patientIdentification: string;
   private patientTagsName: string;
   public patientPhoto: string;
@@ -20,6 +20,9 @@ export class Prescription extends BaseModel {
   constructor() {
     super();
     this.id = uuid.v4();
+  }
+
+  public afterFillFromJSON() {
     this.doctorTagsName = this.doctorName.toLowerCase();
     this.patientTagsName = this.patientName.toLowerCase();
   }
