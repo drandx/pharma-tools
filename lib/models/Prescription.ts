@@ -17,7 +17,6 @@ export class Prescription extends BaseModel {
   public patientPhoto: string;
   public formula: object;
 
-
   constructor() {
     super();
     this.id = uuid.v4();
