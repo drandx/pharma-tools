@@ -14,5 +14,11 @@ export class BaseModel {
     for (var propName in jsonObj) {
         this[propName] = jsonObj[propName] === "" ? undefined : jsonObj[propName];
     }
+    this.afterFillFromJSON();
   }
+
+  public afterFillFromJSON(){
+    //
+  };
+
 }
