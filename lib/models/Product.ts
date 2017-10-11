@@ -17,10 +17,10 @@ export class Product extends BaseModel {
     super();
     this.id = uuid.v4();
     this.status = STATUS_ENUM.ACTIVE;
-    if (this.name) {
-      this.tagsName = this.name.toLowerCase();
-    }
-    
+  }
+  
+  public afterFillFromJSON() {
+    this.tagsName = this.name.toLowerCase();
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_products`, {

@@ -7,26 +7,24 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 export class Prescription extends BaseModel {
   public id: string;
   public doctorId: string;
-  public doctorName: string = '';
+  public doctorName: string;
   private doctorTagsName: string;
   public doctorPhoto: string;
   public patientId: string;
-  public patientName: string = '';
+  public patientName: string;
   public patientIdentification: string;
   private patientTagsName: string;
   public patientPhoto: string;
   public formula: object;
 
-
   constructor() {
     super();
     this.id = uuid.v4();
-    if (this.doctorTagsName) {
-      this.doctorTagsName = this.doctorName.toLowerCase();
-    }
-    if (this.patientTagsName) {
-      this.patientTagsName = this.patientName.toLowerCase();
-    }
+  }
+
+  public afterFillFromJSON() {
+    this.doctorTagsName = this.doctorName.toLowerCase();
+    this.patientTagsName = this.patientName.toLowerCase();
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_prescriptions`, {
