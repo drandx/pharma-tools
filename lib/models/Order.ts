@@ -29,23 +29,21 @@ export class Order extends BaseModel {
     rangeKey: 'customerId',
     timestamps: false,
     schema: {
-        id: joi.string(),
-        customerId: joi.string(),        
-        quoteId: joi.string(),
-        pharmacyId: joi.string(),
-        products: joi.array(),
-        createdAt: joi.number(),
-        updatedAt: joi.number(),
-        status: joi.string(),
-        customer: joi.object(),
+      id: joi.string(),
+      customerId: joi.string(),
+      quoteId: joi.string(),
+      pharmacyId: joi.string(),
+      products: joi.array(),
+      createdAt: joi.number(),
+      updatedAt: joi.number(),
+      status: joi.string(),
+      customer: joi.object(),
     },
     tableName: `${globalConst.stage}_orders`,
-    indexes: [{
-        hashKey: 'pharmacyId',
-        rangeKey: 'createdAt',
-        name: 'pharmacyId-createdAt-index',
-        type: 'global',
-    }],
-});
+    indexes: [
+      { hashKey: 'pharmacyId', rangeKey: 'createdAt', type: 'global', name: 'pharmacyId-createdAt-index',},
+      { hashKey: 'customerId', rangeKey: 'createdAt', type: 'global', name: 'customerIdIndex'},
+    ],
+  });
 
 }
