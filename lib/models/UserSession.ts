@@ -11,7 +11,7 @@ export class UserSession extends BaseModel {
   public userId: string;
   public deviceId: string;
   public createdAt: number;
-  public push_token: string;
+  public pushToken: string;
   
   constructor() {
     super();
