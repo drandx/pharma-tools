@@ -34,13 +34,14 @@ export enum STATUS_ENUM {
     INACTIVE = 'INACTIVE',
 }
 
-export const PUSH_NOTIFICATIONS_ENUM = {
-    PATIENT_NEW_QUOTE_ESTIMATED: {
-        type: 'PATIENT_NEW_QUOTE_ESTIMATED',
-        arn: `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-push-notifications`,
-    },
-    PATIENT_NOT_AVAILABLE_STORES: {
-        type: 'PATIENT_NOT_AVAILABLE_STORES',
-        arn: '',
-    }   
+export class PUSH_NOTIFICATIONS_TOPICS {
+    public static PATIENT_NEW_QUOTE_ESTIMATED: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NEW_QUOTE_ESTIMATED', `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-push-notifications`);
+    public static PATIENT_NOT_AVAILABLE_STORES: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NOT_AVAILABLE_STORES', '');    
+    
+    constructor(public type: string, public arn: string) {
+    }
+    
+    public toString(): string {
+        return this.type + this.arn;
+    }
 }
