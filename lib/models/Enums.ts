@@ -1,3 +1,4 @@
+import { awsConfig, globalConst } from '../config/db/appVariables';
 export enum QUOTE_STATUS_ENUM {
     NEW = 'NEW',
     PENDING = 'PENDING',
@@ -33,7 +34,13 @@ export enum STATUS_ENUM {
     INACTIVE = 'INACTIVE',
 }
 
-export enum PUSH_NOTIFICATIONS_ENUM {
-    PATIENT_NEW_QUOTE_ESTIMATED = 'PATIENT_NEW_QUOTE_ESTIMATED',
-    PATIENT_NOT_AVAILABLE_STORES = 'PATIENT_NOT_AVAILABLE_STORES'
+export const PUSH_NOTIFICATIONS_ENUM = {
+    PATIENT_NEW_QUOTE_ESTIMATED: {
+        type: 'PATIENT_NEW_QUOTE_ESTIMATED',
+        arn: `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-push-notifications`,
+    },
+    PATIENT_NOT_AVAILABLE_STORES: {
+        type: 'PATIENT_NOT_AVAILABLE_STORES',
+        arn: '',
+    }   
 }
