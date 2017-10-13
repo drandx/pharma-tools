@@ -11,4 +11,5 @@ export { User } from './User';
 export { Specialty } from './Specialty';
 export { Allergy } from './Allergies';
 export { ClinicalHistory } from './ClinicalHistory';
-export { QUOTE_STATUS_ENUM, ORDER_STATUS_ENUM, USER_ROLES_ENUM, STATUS_ENUM } from './Enums';
+export { UserSession } from './UserSession';
+export { QUOTE_STATUS_ENUM, ORDER_STATUS_ENUM, USER_ROLES_ENUM, STATUS_ENUM, PATIENT_NOTIFICATION_ENUM } from './Enums';
