@@ -27,11 +27,6 @@ export class UserSession extends BaseModel {
       createdAt: joi.number(),
       pushToken: joi.string(),
     },
-    tableName: `${globalConst.stage}_orders`,
-    indexes: [
-      { hashKey: 'pharmacyId', rangeKey: 'createdAt', type: 'global', name: 'pharmacyId-createdAt-index',},
-      { hashKey: 'customerId', rangeKey: 'createdAt', type: 'global', name: 'customerIdIndex'},
-    ],
+    tableName: `${globalConst.stage}_users_sessions`,
   });
-
 }
