@@ -28,7 +28,7 @@ export class Quote extends BaseModel {
         schema: {
             quoteId: joi.string(),
             customerId: joi.string(),
-            products: joi.object(),
+            products: joi.array(),
             customerPosition: joi.object(),
             status: joi.string(),
             createdAt: joi.number(),
