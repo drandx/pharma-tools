@@ -9,6 +9,7 @@ export interface PayLoad {
       | number
       | boolean
       | Date
+      | Object
     );
   }
 
