@@ -33,7 +33,7 @@ export class QuotePharmacy extends BaseModel {
             createdAt: joi.number(),
             updatedAt: joi.number(),
             status: joi.string(),
-            products: joi.object(),
+            products: joi.array(),
             customer: joi.object(), 
             pharmacyPosition: joi.object(),
         },
