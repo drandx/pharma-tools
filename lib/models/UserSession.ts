@@ -11,6 +11,7 @@ export class UserSession extends BaseModel {
   public userId: string;
   public deviceId: string;
   public createdAt: number;
+  public updatedAt: number;  
   public pushToken: string;
   
   constructor() {
@@ -18,13 +19,14 @@ export class UserSession extends BaseModel {
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users_sessions`, {
-    hashKey: 'id',
+    hashKey: 'userId',
     rangeKey: 'deviceId',
     timestamps: false,
     schema: {
       userId: joi.string(),
       deviceId: joi.string(),
       createdAt: joi.number(),
+      updatedAt: joi.number(),      
       pushToken: joi.string(),
     },
     tableName: `${globalConst.stage}_users_sessions`,
