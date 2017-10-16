@@ -25,6 +25,6 @@ export class Pharmacy extends BaseModel {
           createdAt: joi.number(),
           updatedAt: joi.number(),
         },
-        tableName: `${globalConst.stage}_pharmacy_session`,
+        tableName: `${globalConst.stage}_pharmacies`,
     });
 }
