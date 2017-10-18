@@ -23,8 +23,12 @@ export class Prescription extends BaseModel {
   }
 
   public afterFillFromJSON() {
-    this.doctorTagsName = this.doctorName.toLowerCase();
-    this.patientTagsName = this.patientName.toLowerCase();
+    let name: string = this.doctorName.toLowerCase().split(' ').join('');
+    let id: string = this.id.substring(1, 5);
+    this.doctorTagsName = `${name}-${id}`;
+    name = this.patientName.toLowerCase().split(' ').join('');
+    id = this.id.substring(1, 5);
+    this.patientTagsName = `${name}-${id}`;
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_prescriptions`, {
@@ -48,7 +52,7 @@ export class Prescription extends BaseModel {
     },
     tableName: `${globalConst.stage}_prescriptions`,
     indexes : [
-      { hashKey : 'doctorId', rangeKey : 'patientName', type : 'global', name : 'myPatientsIndex',},
+      { hashKey : 'doctorId', rangeKey : 'patientTagsName', type : 'global', name : 'myPatientsIndex',},
       { hashKey : 'patientId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionPatientIndex',},
       { hashKey : 'doctorId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionDoctorIndex',},
       ]
