@@ -20,7 +20,9 @@ export class Product extends BaseModel {
   }
   
   public afterFillFromJSON() {
-    this.tagsName = this.name.toLowerCase();
+    const name: string = this.name.toLowerCase().split(' ').join('');
+    const id: string = this.id.substring(1, 5);
+    this.tagsName = `${name}-${id}`;
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_products`, {
@@ -36,7 +38,7 @@ export class Product extends BaseModel {
     },
     tableName: `${globalConst.stage}_products`,
     indexes: [
-      { hashKey: 'status', rangeKey: 'name', type: 'global', name: 'statusIndex',},
+      { hashKey: 'status', rangeKey: 'tagsName', type: 'global', name: 'statusIndex',},
       ]
 });
 }

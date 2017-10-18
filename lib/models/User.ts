@@ -24,7 +24,9 @@ export class User extends BaseModel {
   }
 
   public afterFillFromJSON() {
-    this.tagsName = this.name.toLowerCase();
+    const name: string = this.name.toLowerCase().split(' ').join('');
+    const id: string = this.id.substring(1, 5);
+    this.tagsName = `${name}-${id}`;
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
@@ -39,28 +41,30 @@ export class User extends BaseModel {
       identificationType: joi.string().default('CC'),
       userIdentification: joi.string(),
       phone: joi.string(),
-      birthdate: joi.number(),
-      gender: joi.string(),
-      address: joi.string(),
+      birthdate: joi.number().allow(null),
+      gender: joi.string().allow(null),
+      address: joi.string().allow(null),
       city: joi.string(),
-      country: joi.string(),
-      state: joi.string(),
-      photo: joi.string(),
-      photoUrl: joi.string().allow(null),
-      stampName: joi.string(),
+      country: joi.string().allow(null),
+      state: joi.string().allow(null),
+      photo: joi.string().allow(null),
+      userIDImage: joi.string().allow(null),
+      stampName: joi.string().allow(null),
       doctorNumber: joi.string(),
+      cards: joi.array().items(joi.object()),
       doctorType: joi.array().items(joi.string()),
       roles: joi.array().items(joi.string()),
-      userIDImage: joi.string(),
       status: joi.string(),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
     tableName: `${globalConst.stage}_users`,
     indexes : [
-      { hashKey : 'city', rangeKey : 'name', type : 'global', name : 'cityIndex',},
-      { hashKey : 'status', rangeKey : 'name', type : 'global', name : 'statusIndex',},
-      { hashKey : 'email', rangeKey : 'name', type : 'global', name : 'emailIndex',},
+      { hashKey : 'city', rangeKey : 'tagsName', type : 'global', name : 'cityIndex',},
+      { hashKey : 'status', rangeKey : 'tagsName', type : 'global', name : 'statusIndex',},
+      { hashKey : 'email', rangeKey : null, type : 'global', name : 'emailIndex',},
+      { hashKey : 'userIdentification', rangeKey : null, type : 'global', name : 'emailIndex',},
+      
       ]
 });
 }
