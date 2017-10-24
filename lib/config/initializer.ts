@@ -16,19 +16,19 @@ import { globalConst } from './db/appVariables';
 
 console.log('** Environment: ', globalConst);
 
-// const allergiesModel = new Allergy();
-// const clinicalModel = new ClinicalHistory();
-// const orderModel = new Order();
-// const pharmacyModel = new Pharmacy();
-// const pharmacySession = new PharmacySession();
-// const prescriptionModel = new Prescription();
-// const productModel = new Product();
-// const quoteModel = new Quote();
-// const quotePharmacyModel = new QuotePharmacy();
-// const specialtyModel = new Specialty();
+const allergiesModel = new Allergy();
+const clinicalModel = new ClinicalHistory();
+const orderModel = new Order();
+const pharmacyModel = new Pharmacy();
+const pharmacySession = new PharmacySession();
+const prescriptionModel = new Prescription();
+const productModel = new Product();
+const quoteModel = new Quote();
+const quotePharmacyModel = new QuotePharmacy();
+const specialtyModel = new Specialty();
 const userModel = new User();
-// const userPharmacyModel = new UserPharmacy();
-// const userSession = new UserSession();
+const userPharmacyModel = new UserPharmacy();
+const userSession = new UserSession();
 
 dynogels.createTables(undefined, (err, res) => {
     if (err) {
