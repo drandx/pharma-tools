@@ -2,8 +2,10 @@ import * as uuid from 'uuid';
 import * as dynogels from 'drandx-dynogels';
 import { BaseModel } from './BaseModel';
 import { STATUS_ENUM } from './Enums';
-import { globalConst } from '../config/db/appVariables';
+import { globalConst, awsConfig } from '../config/db/appVariables';
 import * as joi from 'joi';
+
+dynogels.AWS.config.update(awsConfig);    
 
 export class User extends BaseModel {
   public id: string;
@@ -63,7 +65,7 @@ export class User extends BaseModel {
       { hashKey : 'city', rangeKey : 'tagsName', type : 'global', name : 'cityIndex',},
       { hashKey : 'status', rangeKey : 'tagsName', type : 'global', name : 'statusIndex',},
       { hashKey : 'email', rangeKey : 'tagsName', type : 'global', name : 'emailIndex',},
-      { hashKey : 'userIdentification', rangeKey : 'tagsName', type : 'global', name : 'emailIndex',},
+      { hashKey : 'userIdentification', rangeKey : 'tagsName', type : 'global', name : 'userIdentificationIndex',},
       
       ]
 });

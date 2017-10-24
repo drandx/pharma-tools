@@ -7,6 +7,8 @@ import { Product } from './Product';
 import { User } from './User';
 import { awsConfig, globalConst } from '../config/db/appVariables';
 
+dynogels.AWS.config.update(awsConfig);    
+
 export class Quote extends BaseModel {
   public quoteId: string;
   public customerId: string;

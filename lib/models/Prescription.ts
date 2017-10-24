@@ -4,6 +4,8 @@ import * as joi from 'joi';
 import { BaseModel } from './BaseModel';
 import { awsConfig, globalConst } from '../config/db/appVariables';
 
+dynogels.AWS.config.update(awsConfig);    
+
 export class Prescription extends BaseModel {
   public id: string;
   public doctorId: string;

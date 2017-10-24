@@ -1,9 +1,11 @@
 import * as uuid from 'uuid';
 import * as dynogels from 'drandx-dynogels';
 import { BaseModel } from './BaseModel';
-import { globalConst } from '../config/db/appVariables';
+import { globalConst, awsConfig } from '../config/db/appVariables';
 import { LOGIN_SESSION_STATUS } from './Enums';
 import * as joi from 'joi';
+
+dynogels.AWS.config.update(awsConfig);    
 
 export class UserPharmacy extends BaseModel {
     public userId: string;
