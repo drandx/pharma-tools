@@ -18,6 +18,7 @@ export class User extends BaseModel {
   public country: string;
   public state: string;
   public status: STATUS_ENUM;
+  public cards: Array<string>;
 
   constructor() {
     super();
@@ -26,9 +27,11 @@ export class User extends BaseModel {
   }
 
   public afterFillFromJSON() {
-    const name: string = this.name.toLowerCase().split(' ').join('');
-    const id: string = this.id.substring(1, 5);
-    this.tagsName = `${name}-${id}`;
+    if (this.name) {
+      const name: string = this.name.toLowerCase().split(' ').join('');
+      const id: string = this.id.substring(1, 5);
+      this.tagsName = `${name}-${id}`; 
+    }
   }
 
   public model: dynogels.Model = dynogels.define(`${globalConst.stage}_users`, {
