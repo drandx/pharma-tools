@@ -13,6 +13,7 @@ export class QuotePharmacy extends BaseModel {
     public pharmacyId: string;
     public products: Product[];
     public status: QUOTE_STATUS_ENUM;
+    public total: number;
     public pharmacyPosition: {
         latitude: number,
         longitude: number,
@@ -34,7 +35,8 @@ export class QuotePharmacy extends BaseModel {
             updatedAt: joi.number(),
             status: joi.string(),
             products: joi.array(),
-            customer: joi.object(), 
+            customer: joi.object(),
+            total: joi.number(),            
             pharmacyPosition: joi.object(),
         },
         tableName: `${globalConst.stage}_quote_pharmacy`,
