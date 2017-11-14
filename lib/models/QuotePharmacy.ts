@@ -5,6 +5,7 @@ import { QUOTE_STATUS_ENUM } from './Enums';
 import { Product } from './Product';
 import { User } from './User';
 import { awsConfig, globalConst } from '../config/db/appVariables';
+import { Pharmacy } from './Pharmacy';
 
 dynogels.AWS.config.update(awsConfig);
 
@@ -19,6 +20,7 @@ export class QuotePharmacy extends BaseModel {
         longitude: number,
     };
     public customer: User;
+    public pharmacy: Pharmacy;
 
     constructor() {
         super();
@@ -36,7 +38,8 @@ export class QuotePharmacy extends BaseModel {
             status: joi.string(),
             products: joi.array(),
             customer: joi.object(),
-            total: joi.number(),            
+            pharmacy: joi.object(),
+            total: joi.number(),      
             pharmacyPosition: joi.object(),
         },
         tableName: `${globalConst.stage}_quote_pharmacy`,

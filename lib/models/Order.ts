@@ -7,6 +7,7 @@ import { ORDER_STATUS_ENUM } from './Enums';
 import { Product } from './Product';
 import { globalConst, awsConfig } from "../config/db/appVariables";
 import { User } from './User';
+import { Pharmacy } from './Pharmacy';
 
 dynogels.AWS.config.update(awsConfig);    
 
@@ -18,6 +19,7 @@ export class Order extends BaseModel {
   public quoteId: string;
   public status: ORDER_STATUS_ENUM;
   public customer: User;
+  public pharmacy: Pharmacy;
 
   constructor() {
     super();
@@ -38,6 +40,7 @@ export class Order extends BaseModel {
       updatedAt: joi.number(),
       status: joi.string(),
       customer: joi.object(),
+      pharmacy: joi.object()
     },
     tableName: `${globalConst.stage}_orders`,
     indexes: [

@@ -13,7 +13,8 @@ export class PharmacySession extends BaseModel {
     public startedAt: number;
     public endedAt: number;
     public state: LOGIN_SESSION_STATUS;
-    public pharmacyName: string;    
+    public pharmacyName: string;
+    public pharmacyAddress: string;        
     public pharmacyPosition: {
         latitude: number,
         longitude: number
@@ -34,6 +35,7 @@ export class PharmacySession extends BaseModel {
           endedAt: joi.number(),          
           state: joi.string(),
           pharmacyName: joi.string(),
+          pharmacyAddress: joi.string(),          
           pharmacyPosition: joi.object(),
           createdAt: joi.number(),
           updatedAt: joi.number(),
