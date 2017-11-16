@@ -26,10 +26,10 @@ export class Prescription extends BaseModel {
 
   public afterFillFromJSON() {
     let name: string = this.doctorName.toLowerCase().split(' ').join('');
-    let id: string = this.id.substring(1, 5);
+    let id: string = this.doctorId.substring(1, 5);
     this.doctorTagsName = `${name}-${id}`;
     name = this.patientName.toLowerCase().split(' ').join('');
-    id = this.id.substring(1, 5);
+    id = this.patientId.substring(1, 5);
     this.patientTagsName = `${name}-${id}`;
   }
 
