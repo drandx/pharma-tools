@@ -11,12 +11,14 @@ export class Product extends BaseModel {
   public id: string;
   public name: string;
   public status: STATUS_ENUM;
+  public requiredPrescription: boolean;
   private tagsName: string;
-
+  
   constructor() {
     super();
     this.id = uuid.v4();
     this.status = STATUS_ENUM.ACTIVE;
+    this.requiredPrescription = false;
   }
   
   public afterFillFromJSON() {
@@ -35,6 +37,7 @@ export class Product extends BaseModel {
       status: joi.string(),
       createdAt: joi.number(),
       updatedAt: joi.number(),
+      requiredPrescription: joi.boolean(),
     },
     tableName: `${globalConst.stage}_products`,
     indexes: [
