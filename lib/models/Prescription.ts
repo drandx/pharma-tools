@@ -18,6 +18,7 @@ export class Prescription extends BaseModel {
   private patientTagsName: string;
   public patientPhoto: string;
   public formula: object;
+  public diagnosis: string;
 
   constructor() {
     super();
@@ -49,6 +50,7 @@ export class Prescription extends BaseModel {
       patientPhoto: joi.string(),
       patientIdentification: joi.string(),
       formula: joi.array().items(joi.object()),
+      diagnosis: joi.string().allow(null),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
