@@ -9,7 +9,7 @@ dynogels.AWS.config.update(awsConfig);
 
 export class Product extends BaseModel {
   public id: string;
-  public name: string;
+  public product: string;
   public presentation: string;
   public status: STATUS_ENUM;
   public requiredPrescription: boolean;
@@ -25,7 +25,7 @@ export class Product extends BaseModel {
   }
   
   public afterFillFromJSON() {
-    const name: string = this.name.toLowerCase().split(' ').join('');
+    const name: string = this.product.toLowerCase().split(' ').join('');
     const id: string = this.id.substring(1, 5);
     this.tagsName = `${name}-${id}`;
   }
@@ -35,7 +35,7 @@ export class Product extends BaseModel {
     timestamps: false,
     schema: {
       id: joi.string(),
-      name: joi.string(),
+      product: joi.string(),
       presentation: joi.string().allow(null),
       category: joi.string(),
       tagsName: joi.string(),
