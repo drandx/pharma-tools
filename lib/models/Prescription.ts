@@ -14,6 +14,7 @@ export class Prescription extends BaseModel {
   public doctorPhoto: string;
   public patientId: string;
   public patientName: string;
+  public patientEmail: string;
   public patientIdentification: string;
   private patientTagsName: string;
   public patientPhoto: string;
@@ -46,6 +47,7 @@ export class Prescription extends BaseModel {
       doctorPhoto: joi.string(),
       patientId: joi.string(),
       patientName: joi.string(),
+      patientEmail: joi.string(),
       patientTagsName: joi.string(),
       patientPhoto: joi.string(),
       patientIdentification: joi.string(),
