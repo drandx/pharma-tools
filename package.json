@@ -1,6 +1,6 @@
 {
   "name": "pharma-tools",
-  "version": "0.3.46",
+  "version": "0.3.47",
   "description": "Shared code for pharmalatam back-end",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
