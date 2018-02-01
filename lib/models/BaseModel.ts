@@ -19,7 +19,7 @@ export class BaseModel {
     this.afterFillFromJSON();
   }
 
-  public static transformData(jsonObj: {}, exclude: string[]): {} {
+  public static transformData(jsonObj: {}, exclude?: string[]): {} {
     for (var propName in jsonObj) {
         if ( exclude.includes(propName)) {
           continue;
