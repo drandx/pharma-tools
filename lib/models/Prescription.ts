@@ -62,5 +62,5 @@ export class Prescription extends BaseModel {
       { hashKey : 'patientId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionPatientIndex',},
       { hashKey : 'doctorId', rangeKey : 'createdAt', type : 'global', name : 'prescriptionDoctorIndex',},
       ]
-});
+    });
 }
