@@ -6,7 +6,7 @@ import { awsConfig, globalConst } from '../config/db/appVariables';
 
 dynogels.AWS.config.update(awsConfig);    
 
-export class Prescription extends BaseModel {
+export class PatientPrescription extends BaseModel {
   public id: string;
   public patientId: string;
   public patientName: string;
