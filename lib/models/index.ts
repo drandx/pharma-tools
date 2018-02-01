@@ -4,6 +4,7 @@ export { Order } from './Order';
 export { Pharmacy } from './Pharmacy';
 export { PharmacySession } from './PharmacySession';
 export { Prescription } from './Prescription';
+export { PatientPrescription } from './PatientPrescription';
 export { Product } from './Product';
 export { Quote } from './Quote';
 export { QuotePharmacy } from './QuotePharmacy';
