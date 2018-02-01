@@ -1,4 +1,6 @@
+import * as dynogels from 'drandx-dynogels';
 import {Utils} from '../config/utils';
+import { capitalize, changeTimeFormat } from '../miscelanea'
 
 export class BaseModel {
   public createdAt: number;
@@ -16,6 +18,22 @@ export class BaseModel {
     }
     this.afterFillFromJSON();
   }
+
+  public static transformData(jsonObj: {}): {} {
+    for (var propName in jsonObj) {
+        if (propName == 'createdAt' || propName == 'updatedAt' ) {
+          jsonObj[propName] =  changeTimeFormat(<number>jsonObj[propName]);
+        }
+        else if (typeof(jsonObj[propName]) === 'string') {
+          jsonObj[propName] =  capitalize(<string>jsonObj[propName]);
+        }
+        else {
+          return jsonObj[propName]
+        }
+    }
+    return jsonObj;
+  }
+
 
   public afterFillFromJSON(){
     //

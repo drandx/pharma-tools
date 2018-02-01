@@ -4,3 +4,4 @@ export * from './config/db/db';
 export * from './config/db/appVariables';
 export * from './state-machines';
 export * from './services';
+export * from './miscelanea';
