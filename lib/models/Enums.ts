@@ -52,3 +52,18 @@ export class PUSH_NOTIFICATIONS_TOPICS {
         return this.type + this.arn;
     }
 }
+
+export class EMAILS_TOPICS {
+    public arn : string;
+    public static RECOVERY_PASSWORD: EMAILS_TOPICS = new EMAILS_TOPICS('RECOVERY_PASSWORD');
+    public static SEND_PRESCRIPTION: EMAILS_TOPICS = new EMAILS_TOPICS('SEND_PRESCRIPTION');    
+    
+    constructor(public type: string) {
+        this.arn = `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-email-notifications`;
+        this.type = type;
+    }
+    
+    public toString(): string {
+        return this.type + this.arn;
+    }
+}
