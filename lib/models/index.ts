@@ -1,3 +1,4 @@
+import { EmailNotification } from './EmailNotification';
 export { UserPharmacy } from './UserPharmacy';
 export { BaseModel } from './BaseModel';
 export { Order } from './Order';
@@ -14,4 +15,6 @@ export { Allergy } from './Allergies';
 export { ClinicalHistory } from './ClinicalHistory';
 export { UserSession } from './UserSession';
 export { PushNotification } from './PushNotification';
-export { QUOTE_STATUS_ENUM, ORDER_STATUS_ENUM, USER_ROLES_ENUM, STATUS_ENUM, PUSH_NOTIFICATIONS_TOPICS } from './Enums';
+export { EmailNotification } from './EmailNotification';
+export { QUOTE_STATUS_ENUM, ORDER_STATUS_ENUM, USER_ROLES_ENUM, 
+    STATUS_ENUM, PUSH_NOTIFICATIONS_TOPICS, EMAILS_TOPICS } from './Enums';
