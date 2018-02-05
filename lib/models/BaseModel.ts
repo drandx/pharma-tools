@@ -19,19 +19,19 @@ export class BaseModel {
     this.afterFillFromJSON();
   }
 
-  public static transformData(jsonObj: {}, exclude?: string[]): {} {
+  public static transformData(jsonObj: {}, exclude?: String[]): {} {
     for (var propName in jsonObj) {
-        if ( exclude.includes(propName)) {
-          continue;
-        }
-        else if (propName == 'createdAt' || propName == 'updatedAt' ) {
-          jsonObj[propName] =  changeTimeFormat(<number>jsonObj[propName]);
-        }
-        else if (typeof(jsonObj[propName]) === 'string') {
-          jsonObj[propName] =  capitalize(<string>jsonObj[propName]);
-        }
-        else {
-          continue;
+        try {
+          if ( exclude.includes(propName)) {
+            continue;
+          }
+          else if (propName == 'createdAt' || propName == 'updatedAt' ) {
+            jsonObj[propName] =  changeTimeFormat(<number>jsonObj[propName]);
+          }
+          else if (typeof(jsonObj[propName]) === 'string') {
+            jsonObj[propName] =  capitalize(<string>jsonObj[propName]);
+          }
+        } catch(e) {
         }
     }
     return jsonObj;
