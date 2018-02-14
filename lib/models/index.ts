@@ -1,4 +1,5 @@
 import { EmailNotification } from './EmailNotification';
+import { Device } from './Device';
 export { UserPharmacy } from './UserPharmacy';
 export { BaseModel } from './BaseModel';
 export { Order } from './Order';
