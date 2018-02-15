@@ -25,7 +25,7 @@ export class Device extends BaseModel {
       id: joi.string(),
       deviceId: joi.string(),
       token: joi.string(),
-      userId: joi.string().email(),
+      userId: joi.string(),
       createdAt: joi.number(),
       updatedAt: joi.number(),
     },
