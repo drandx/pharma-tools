@@ -42,10 +42,15 @@ export enum CATEGORY_ENUM {
     NATURAL = 'NATURAL',
 }
 export class PUSH_NOTIFICATIONS_TOPICS {
-    public static PATIENT_NEW_QUOTE_ESTIMATED: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NEW_QUOTE_ESTIMATED', `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-push-notifications`);
-    public static PATIENT_NOT_AVAILABLE_STORES: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NOT_AVAILABLE_STORES', '');    
-    
-    constructor(public type: string, public arn: string) {
+    private arn: string ;
+    public static PATIENT_NEW_QUOTE_ESTIMATED: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NEW_QUOTE_ESTIMATED');
+    public static PATIENT_NOT_AVAILABLE_STORES: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_NOT_AVAILABLE_STORES');    
+    public static PATIENT_AVAILABLE_STORES: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('PATIENT_AVAILABLE_STORES');    
+    public static NEW_PRESCRIPTION: PUSH_NOTIFICATIONS_TOPICS = new PUSH_NOTIFICATIONS_TOPICS('NEW_PRESCRIPTION'); 
+
+    constructor(public type: string) {
+        this.arn = `arn:aws:sns:${awsConfig.region}:${awsConfig.arn}:${globalConst.stage}-push-notifications`;
+        this.type = type
     }
     
     public toString(): string {
